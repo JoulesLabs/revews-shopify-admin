@@ -66,6 +66,17 @@ services:
         networks:
           - admin_network
 
+    mailhog:
+      image: mailhog/mailhog
+      container_name: rx_mailhog
+      logging:
+        driver: 'none'  # disable saving logs
+      ports:
+        - 1026:1025 # smtp server
+        - 8026:8025 # web ui
+      networks:
+        - admin_network
+        
 volumes:
   pgdata:
   # database:
